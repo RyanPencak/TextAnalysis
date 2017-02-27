@@ -1,3 +1,11 @@
+####################################################################################################################################################################
+# Name: Ryan Pencak
+# File: TextAnalysisMain
+# Function: main
+# Summary: This is the main function of the program. It launches the GUI which will handle to work for the program.
+####################################################################################################################################################################
+
+
 import csv
 import sys
 from Document import *
@@ -5,41 +13,30 @@ from CommandLinePlotter import *
 from BasicStats import *
 from tkinter import Tk, Label, Button, Entry, StringVar, END, W, E
 from UserGui import *
-from MatPlotPloter import *
+#from MatPlotPloter import *
 #import DocumentStreamError
-#import MatPlotPloter
 #import UserInputError
+
+
+# Main function for the program to run
+# Precondition: None
+# Postcondition: Launches the GUI and runs the program, returning the analysis which is the root of the mainloop of the GUI
 
 def main():
 
 	# Ask user to input a file name
 	# f = input ("Enter a file name:")
+	
+	Files = input("Please enter the number of files will you be using." + "\n")
+	
+	numFiles = int(Files)
 
 	# Using the GUI to get user input and store file in f
 	root = Tk()
-	my_gui = UserGui(root)
-	f = root.mainloop()
-
-
-def mainwork(f):
-	# Create a document object with the fileName
-	doc = Document(f)
-
-	# Use generateWhole method to read the file in
-	doc.generateWhole(f)
-
-	# parse words from document
-	words = doc.getWordList()
-
-	# call createFreqMap to get frequencies of words in parsed words
-	d = createFreqMap(words)
-
-	# call topN where n = 10 on the dictionary of parsed words
-	freq = topN(d, 10)
-
-	# use scatter to get scatter plot of frequencies (only input frequencies)
-	scatter(freq)
-	barPlot(freq)
+	GUI = UserGUI(root, numFiles)
+	evaluation = root.mainloop()
+	
+	print(evaluation)
 
 
 if __name__ == "__main__":
